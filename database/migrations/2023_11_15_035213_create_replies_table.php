@@ -11,13 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('threads', function (Blueprint $table) {
+        Schema::create('replies', function (Blueprint $table) {
             $table->id();
 
-            $table->unsignedBigInteger('category_id');
-            $table->foreign('category_id')
+            $table->unsignedBigInteger('reply_id')->nullable();
+            $table->foreign('reply_id')
                 ->references('id')
-                ->on('categories')
+                ->on('replies')
+                ->onDelete('set null');
+
+            $table->unsignedBigInteger('thread_id');
+            $table->foreign('thread_id')
+                ->references('id')
+                ->on('threads')
                 ->onDelete('cascade');
 
             $table->unsignedBigInteger('user_id');
@@ -26,7 +32,6 @@ return new class extends Migration
                 ->on('users')
                 ->onDelete('cascade');
             
-            $table->string('title');
             $table->text('body');
 
             $table->timestamps();
@@ -38,6 +43,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('threads');
+        Schema::dropIfExists('replies');
     }
 };
