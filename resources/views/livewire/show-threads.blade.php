@@ -26,6 +26,13 @@
 
     
     <div class="w-full">
+        <form class="mb-4">
+            <input type="text"
+            placeholder="// ..."
+            class="bg-slate-300 border-0 rounded-md w-1/3 p-3 text-black/70 text-xs"
+            wire:model.live="search"
+            >
+        </form>
 
         <!-- Formulario -->
 
