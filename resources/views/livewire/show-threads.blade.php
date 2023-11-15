@@ -47,8 +47,9 @@
 
                 <div class="w-full">
                     <h2 class="mb-4 flex items-start justify-between">
-                        <a href="">
+                        <a href="{{ route('thread', $thread) }}" class="text-xl font-semibold text-black/70">
                             {{ $thread->title }}
+                            
                         </a>
                         <span
                         class="rounded-full text-xm py-2 px-4 capitalize"
