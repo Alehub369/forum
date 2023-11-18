@@ -8,12 +8,38 @@
                 <p class="mb-2 text-blue-600 font-semibold text-xs">
                     {{ $reply->user->name }}
                 </p>
-                <p class="text">
-                    {{ $reply->body }}
-                </p>
+
+
+
+                @if ($is_editing)
+                <form wire:submit="updateReply" class="mt-4">
+                    <input 
+                    wire:model="body"
+                    type="text" 
+                    class="bg-slate-300 border-0 rounded-md w-1/2 p-6 text-black/70 text-xs">
+                </form>
+                @else
+                <p class="text">{{ $reply->body }}</p>
+                @endif
+
+                @if ($is_creating)
+                <form wire:submit="postChild" class="mt-4">
+                    <input 
+                    wire:model="body"
+                    type="text" 
+                    placeholder="Escribo una respuesta"
+                    class="bg-slate-300 border-0 rounded-md w-1/2 p-6 text-black/70 text-xs">
+                </form>
+                @endif
+
                 <p class="mt-4 text-white/60 text-xs flex gap-2 justify-end">
-                    <a href="" class="hover:text-white">Responder</a>
-                    <a href="" class="hover:text-white">Editar</a>
+                    @if (is_null($reply->reply_id))
+                    <a href="#" wire:click="$toggle('is_creating')" class="hover:text-white">Responder</a>
+                    @endif
+
+                    @can ('update', $reply)
+                    <a href="#" wire:click="$toggle('is_editing')" class="hover:text-white">Editar</a>
+                    @endcan
                 </p>
             </div>
         </div>

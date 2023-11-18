@@ -11,6 +11,8 @@ class ShowThread extends Component
     public Thread $thread;
     public $body = '';
 
+
+
     public function postReply()
     {
         // validate
@@ -24,6 +26,7 @@ class ShowThread extends Component
 
         // refresh
         $this->body = '';
+
     }
 
     public function render()

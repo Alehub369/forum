@@ -24,12 +24,12 @@
         </section>
         <div>
 
-       <!--  @foreach ($replies as $reply)
+        <!-- @foreach ($replies as $reply)
             <livewire:show-reply :$reply :key="$reply->id" />
         @endforeach Respuesta --> 
 
         <!-- formulario -->
-      
+
         <form wire:submit="postReply">
             <input 
             wire:model="body"
@@ -37,6 +37,7 @@
             placeholder="Escribo una respuesta"
             class="bg-slate-300 border-0 rounded-md w-1/2 p-6 text-black/70 text-xs">
         </form>
+
 </div>
 
 
