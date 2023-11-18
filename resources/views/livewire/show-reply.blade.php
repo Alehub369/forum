@@ -18,4 +18,11 @@
             </div>
         </div>
     </div>
+
+    <div class="lg:px-8 ">
+    @foreach($reply->replies as $item)
+            @livewire('show-reply', ['reply' => $item], key('reply-'.$item->id))
+    @endforeach
+    </div>
+
 </div>
