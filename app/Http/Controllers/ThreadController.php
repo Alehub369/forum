@@ -12,10 +12,7 @@ class ThreadController extends Controller
     {
         $categories = Category::get();
 
-    }
+        return view('thread.edit', compact('categories', 'thread'));
 
-    public function render()
-    {
-        return view('thread.edit');
     }
 }
